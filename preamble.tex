@@ -23,3 +23,14 @@
 \usepackage{titlesec}
 \titlespacing{\subsection}{1zw}{\baselineskip}{0pt}
 \titlespacing{\subsubsection}{1zw}{\baselineskip}{0pt}
+
+% 参考文献リストのリスト番号形式を 1) 等の右小カッコのみに変更
+\makeatletter
+\def\@biblabel#1{#1)}
+\makeatother
+
+% 本文中のciteを上付き1)に変更
+\usepackage{overcite}        % \usepackage[superscript]{cite} と同じ．
+\makeatletter
+\def\@citess#1{\mbox{$\m@th^{\hbox{\OverciteFont{#1)}}}$}}
+\makeatother
