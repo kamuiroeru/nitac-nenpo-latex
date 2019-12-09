@@ -5,3 +5,21 @@
 \usepackage{changepage}
 \usepackage{setspace}
 
+% 全角数字を定義
+\makeatletter
+\def\@arabicz#1{%
+  \ifcase#1 ０\or １\or ２\or ３\or ４\or ５\or ６\or ７\or ８\or ９\or １０\or
+  １１\or １２\or １３\or １４\or １５\or １６\or １７\or １８\or １９\or ２０\or 
+  ２１\or ２２\or ２３\or ２４\or ２５\or ２６\else\@ctrerr\fi}
+\def\arabicz#1{\expandafter\@arabicz\csname c@#1\endcsname}%１２３ 全角
+\makeatother
+
+% セクションの書式を変更
+\renewcommand{\thesection}{\normalsize\arabicz{section}．}
+\renewcommand{\thesubsection}{\normalsize\arabicz{section}･\arabicz{subsection}}
+\renewcommand{\thesubsubsection}{\normalsize\arabicz{section}･\arabicz{subsection}･\arabicz{subsubsection}}
+
+% セクションの上の余白を調整
+\usepackage{titlesec}
+\titlespacing{\subsection}{1zw}{\baselineskip}{0pt}
+\titlespacing{\subsubsection}{1zw}{\baselineskip}{0pt}
