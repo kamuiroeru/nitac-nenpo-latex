@@ -4,6 +4,9 @@
 \usepackage{lipsum}
 \usepackage{changepage}
 \usepackage{setspace}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{here}
+\usepackage{booktabs}
 
 % 全角数字を定義
 \makeatletter
@@ -34,3 +37,10 @@
 \makeatletter
 \def\@citess#1{\mbox{$\m@th^{\hbox{\OverciteFont{#1)}}}$}}
 \makeatother
+
+% キャプションのフォントをゴシックに，区切りを無しに
+\usepackage{caption}
+\captionsetup[figure]{font=bf, labelsep=quad}
+\captionsetup[table]{font=bf, labelsep=quad}
+\setlength\intextsep{\baselineskip}
+\setlength\abovecaptionskip{0pt}

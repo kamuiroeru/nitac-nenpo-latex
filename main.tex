@@ -16,6 +16,33 @@ ADAM\cite{ADAM}がある．
 \subsubsection{サブ2乗セクション}
 ほあｓｊどふぁじょｓｄんふぉあｓｄんゔぁ
 
+\section{画像の挿入}
+画像を入れる場合は，画像の上部とキャプションの下に1行の空白ができるように配置する．
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{latex-logo.png}
+    \caption{LaTeXのロゴ}
+    \label{fig:latex}
+\end{figure}
+って感じに下にも余白を設ける
+
+\section{表の挿入}
+\lipsum[1]
+表を入れる場合も，表のキャプションの上と，表のしたに1行の空白ができるように配置する．
+\begin{table}[H]
+\centering
+\caption{例の表}
+\label{tab:example}
+\begin{tabular}{@{}lll@{}}
+\toprule
+hoge & fuga & pyo \\
+\midrule
+11   & 12   & 13  \\
+21   & 22   & 23 \\
+\bottomrule
+\end{tabular}
+\end{table}
+って感じに下にも余白を設ける
 
 \bibliography{mybib}
 \bibliographystyle{junsrt}
