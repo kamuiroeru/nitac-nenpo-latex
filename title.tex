@@ -13,13 +13,10 @@
 
 % 要素のマクロを定義
 \newcommand{\titleJP}[1]{
-        {\gtfamily\mdseries\upshape \myFontLarge{#1}}
+    \begin{spacing}{1.5}
+        \gtfamily\mdseries\upshape \myFontLarge{#1}
+    \end{spacing}
 }  % 日本語タイトル
-% \newcommand{\titleJP}[1]{
-%     \begin{spacing}[2.0]
-%         #1
-%     \end{spacing}
-% }  % 日本語タイトル
 \newcommand{\authorJP}[1]{{\normalsize #1}\footnotemark[1]}  % 日本語著者
 \newcommand{\titleEN}[1]{{\large #1}}  % 英語タイトル
 \newcommand{\authorEN}[1]{{\normalsize #1}}  % 英語著者
@@ -30,17 +27,20 @@
         \hspace{5ex} #1
     \end{adjustwidth}
 }
+\newcommand{\customKeywords}[1]{
+    \begin{adjustwidth}{10mm}{10mm}
+        {\bf KEY WORDS}: #1
+    \end{adjustwidth}
+}
 % 出典: https://w.atwiki.jp/chaos987/pages/23.html
 
 % タイトルとアブストラクト全体
-\newcommand{\titleAndAbstract}[6]{
+\newcommand{\titleAndAbstractAndKeywords}[7]{
     \twocolumn[  % これで囲むと 1段組みにできる
     \begin{center}
-        　 \\  % 1行分の余白
+        \vspace{3\baselineskip}  % 3行開ける
+        \titleJP{#1}  % 日本語タイトル
         \vspace{\baselineskip}  % 1行（10pt）開ける
-        \vspace{\baselineskip}  % 1行（10pt）開ける 上記と合わせて3行分の余白確保
-        \titleJP{#1} \\  % 日本語タイトル
-        \vspace{\baselineskip}
         \authorJP{#2} \\  % 日本語著者とフットノート所属
         \vspace{\baselineskip}
         \titleEN{#4} \\  % 英語タイトル
@@ -49,6 +49,9 @@
         \vspace{\baselineskip}
         \customAbstract{#6}  % 英語アブストラクト
     \end{center}
+    \vspace{\baselineskip}
+    \customKeywords{#7}
+    \vspace{3\baselineskip}
     ]
     \footnotetext[1]{#3}  % \twocolumn[]の中だとfootnoteが使えないので処置
 
@@ -56,8 +59,8 @@
 
 %%% マクロゴリ押し（編集不要）ここまで ---------------------------------------
 
-% タイトルとアブストラクトを入力
-\titleAndAbstract
+% タイトルとアブストラクトとを入力
+\titleAndAbstractAndKeywords
 % 日本語タイトル
 {真空蒸着した銅フタロシアニン薄膜の膜厚測定．真空蒸着した銅フタロシアニン薄膜の膜厚測定}
 % 日本語著者と所属
@@ -67,4 +70,12 @@
 % 英語著者
 {Taro KOSEN}
 % 英語アブストラクト
-{\lipsum[1]}
+{
+Copper phthalocyanine (CuPc) is often used in organic light emitting devices.
+We deposited CuPc films on silicon wafers by means of a vacuum deposition method.
+We then tried to estimate film thickness using a Fourier transformed infrared spectrometer.
+This method is applicable when the thickness is over several $\mu$ m.
+The obtained thickness was compared with that measured with a surface profiler and thedifference between the two methods is under 44 \%.
+}
+% キーワード
+{thin films, copper phthalocyanine}
