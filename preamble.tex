@@ -1,4 +1,4 @@
-%! TEX root = ../main.tex
+%! TEX root = main.tex
 
 \usepackage[top=25truemm,bottom=25truemm,left=20truemm,right=20truemm]{geometry}
 \usepackage{lipsum}
@@ -7,30 +7,42 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{here}
 \usepackage{booktabs}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{multirow}
+
 
 % 全角数字を定義
 \makeatletter
 \def\@arabicz#1{%
   \ifcase#1 ０\or １\or ２\or ３\or ４\or ５\or ６\or ７\or ８\or ９\or １０\or
-  １１\or １２\or １３\or １４\or １５\or １６\or １７\or １８\or １９\or ２０\or 
+  １１\or １２\or １３\or １４\or １５\or １６\or １７\or １８\or １９\or ２０\or
   ２１\or ２２\or ２３\or ２４\or ２５\or ２６\else\@ctrerr\fi}
 \def\arabicz#1{\expandafter\@arabicz\csname c@#1\endcsname}%１２３ 全角
 \makeatother
 
-% セクションの書式を変更
-\renewcommand{\thesection}{\normalsize\arabicz{section}．}
-\renewcommand{\thesubsection}{\normalsize\arabicz{section}･\arabicz{subsection}}
-\renewcommand{\thesubsubsection}{\normalsize\arabicz{section}･\arabicz{subsection}･\arabicz{subsubsection}}
 
-% セクションの上の余白を調整
-\usepackage{titlesec}
-\titlespacing{\subsection}{1zw}{\baselineskip}{0pt}
-\titlespacing{\subsubsection}{1zw}{\baselineskip}{0pt}
+% セクション系
+  % 書式を変更
+  \renewcommand{\thesection}{\normalsize\arabicz{section}．}  % sectionを 「字．」 の形式に変更
+  \renewcommand{\thesubsection}{\normalsize\arabicz{section}･\arabicz{subsection}}  % subsection を 「数字･数字」の形式に変更
+  \renewcommand{\thesubsubsection}{\normalsize\arabicz{section}･\arabicz{subsection}･\arabicz{subsubsection}}  % subsection を 「数字･数字･数字」の形式に変更
+
+  % 余白を調整
+  \usepackage{titlesec}
+  % zw 現在有効な全角漢字の幅
+  % zh 現在有効な全角漢字の高さ
+  % \titlespacing{セクションタイプ}{左の余白（インデント）}{上の余白}{下（セクションと本文の間）の余白} で設定する
+  \titlespacing{\subsection}{1zw}{1zh}{0pt}
+  \titlespacing{\subsubsection}{1zw}{1zh}{0pt}
+
 
 % 参考文献リストのリスト番号形式を 1) 等の右小カッコのみに変更
 \makeatletter
 \def\@biblabel#1{#1)}
 \makeatother
+
 
 % 本文中のciteを上付き1)に変更
 \usepackage{overcite}        % \usepackage[superscript]{cite} と同じ．
@@ -38,12 +50,33 @@
 \def\@citess#1{\mbox{$\m@th^{\hbox{\OverciteFont{#1)}}}$}}
 \makeatother
 
-% キャプションのフォントをゴシックに，区切りを無しに
-\usepackage[style=base]{caption}
-\captionsetup[figure]{font=bf, labelsep=quad}
-\captionsetup[table]{font=bf, labelsep=quad}
-\setlength\intextsep{\baselineskip}
-\setlength\abovecaptionskip{0pt}
 
-% 最後の余白を揃える
-\usepackage{flushend}
+% キャプション系
+\usepackage[style=base]{caption}
+  % 図のキャプション
+  \captionsetup[figure]{
+    font=bf,  % フォントをゴシックに，
+    labelsep=quad,  % 図番号とキャプションの間の余白を設定
+    belowskip=-1zh,  % キャプションとその下の文とかの間隔を0に（おそらく初期設定で+1zhになっているので-1zhすることで相殺）
+    aboveskip=0pt  % 図とキャプションの間隔を0に
+  }
+
+  % 表のキャプション
+  \captionsetup[table]{
+    font=bf,  % フォントをゴシックに，
+    labelsep=quad  % 図番号とキャプションの間の余白を設定
+  }
+
+
+% その他の余白系
+  % 本文中に入れる（場所指定が[H]の場合の）図と表の上下の余白を1行分確保する
+  \setlength\intextsep{\baselineskip}
+
+  % 場所指定が[t]や[b]の場合の図や表同士の余白を1行分確保する
+  \setlength\floatsep{\baselineskip}
+
+  % 場所指定が[t]や[b]の場合の図や表と本文との余白を1行分確保する
+  \setlength\textfloatsep{\baselineskip}
+
+  % 2列の最後の余白を揃える（他の行間がバグる元なので可能な限り使わないようにしたい）
+  \usepackage{flushend}

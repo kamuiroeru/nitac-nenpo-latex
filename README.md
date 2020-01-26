@@ -18,7 +18,7 @@ git clone https://github.com/kamuiroeru/nitac-nenpo-latex
 
 #### 2. タイトルを変更
 
-タイトルを変更する場合は、 [title.tex](title.tex) の60~81行目あたりを以下のように変更します。
+タイトルを変更する場合は、 [title.tex](title.tex) の67~83行目あたりを以下のように変更します。
 
 ```latex
 % タイトルとアブストラクトとを入力

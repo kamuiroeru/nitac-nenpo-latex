@@ -24,8 +24,7 @@ ADAM\cite{ADAM}がある．
     \caption{LaTeXのロゴ}
     \label{fig:latex}
 \end{figure}
-って感じに下にも余白を設ける
-
+って感じに下にも余白を設ける．
 \section{表の挿入}
 \lipsum[1]
 表を入れる場合も，表のキャプションの上と，表のしたに1行の空白ができるように配置する．
@@ -42,7 +41,18 @@ hoge & fuga & pyo \\
 \bottomrule
 \end{tabular}
 \end{table}
-って感じに下にも余白を設ける
+って感じに下にも余白を設ける．
+
+数式式\eqref{eq:hoge}に示す．
+\begin{equation}
+    \frac{1}{2} + \frac{1}{3} = \frac{3 + 2}{6} = \frac{5}{6} \label{eq:hoge}
+\end{equation}
+
+本文の終わりを揃えるために導入した flushend.sty を使うと，
+最後のページのあらゆる余白がバグる
+（例えば上の式\eqref{eq:hoge}の上下の余白の大きさが違うとか）
+傾向にあるので，
+可能ならば使わずに手動で調整したほうが良いかもです．
 
 \bibliography{mybib}
 \bibliographystyle{junsrt}
