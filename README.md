@@ -8,7 +8,17 @@
 
 不具合等が見つかりましたら、 [issue](https://github.com/kamuiroeru/nitac-nenpo-latex/issues) にお願いします！
 
-## 使いかた
+## Contents
+- [main.tex](main.tex)
+本文を入力していくtexファイル
+- [title.tex](title.tex)
+タイトルとアブストラクト、キーワードを入力するtexファイル
+- [style.tex](style.tex)
+年報のフォーマットやマクロを定義しているtexファイル
+- [usepackages.tex](usepackages.tex)
+`\usepackage` をまとめたtexファイル
+
+## How To Use
 
 #### 1. このリポジトリをクローン
 
@@ -18,10 +28,10 @@ git clone https://github.com/kamuiroeru/nitac-nenpo-latex
 
 #### 2. タイトルを変更
 
-タイトルを変更する場合は、 [title.tex](title.tex) の67~83行目あたりを以下のように変更します。
+タイトルを変更する場合は、 [title.tex](title.tex) を以下のように変更します。
 
 ```latex
-% タイトルとアブストラクトとを入力
+% タイトルとアブストラクトを入れるマクロ(style.texの後半で定義)
 \titleAndAbstractAndKeywords
 % 日本語タイトル
 {日本語タイトル}
@@ -39,8 +49,6 @@ git clone https://github.com/kamuiroeru/nitac-nenpo-latex
 {キーワード（, 区切り）}
 ```
 
-
-
 入力の一例として以下のようになります。
 
 ```latex
@@ -56,11 +64,11 @@ git clone https://github.com/kamuiroeru/nitac-nenpo-latex
 {Taro KOSEN}
 % 英語アブストラクト
 {
-Copper phthalocyanine (CuPc) is often used in organic light emitting devices.
-We deposited CuPc films on silicon wafers by means of a vacuum deposition method.
-We then tried to estimate film thickness using a Fourier transformed infrared spectrometer.
-This method is applicable when the thickness is over several $\mu$ m.
-The obtained thickness was compared with that measured with a surface profiler and thedifference between the two methods is under 44 \%.
+    Copper phthalocyanine (CuPc) is often used in organic light emitting devices.
+    We deposited CuPc films on silicon wafers by means of a vacuum deposition method.
+    We then tried to estimate film thickness using a Fourier transformed infrared spectrometer.
+    This method is applicable when the thickness is over several $\mu$ m.
+    The obtained thickness was compared with that measured with a surface profiler and thedifference between the two methods is under 44 \%.
 }
 % キーワード
 {thin films, copper phthalocyanine}
@@ -68,12 +76,13 @@ The obtained thickness was compared with that measured with a surface profiler a
 
 #### 3. 本文を編集する
 
-[main.tex](main.tex) を編集する。
+[main.tex](main.tex) を編集します
 
 ```latex
 \documentclass[10pt, a4j, uplatex, twocolumn]{jsarticle}
 
-\input{preamble.tex}
+\input{usepackages.tex}
+\input{style.tex}
 
 \begin{document}
 \input{title.tex}
